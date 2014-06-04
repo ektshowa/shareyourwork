@@ -12,7 +12,7 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: test_db
+  database: shareyourwork_db
   pool: 5
   username: root
   password: 
