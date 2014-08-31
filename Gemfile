@@ -6,14 +6,14 @@ gem 'rails', '4.1.1'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
-gem 'bootstrap-sass', '2.3.2.0'
-gem 'sprockets', '2.11.0'
+gem 'bootstrap-sass'
+gem 'sprockets'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
-gem 'will_paginate', '3.0.4'
-gem 'bootstrap-will_paginate', '0.0.9'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 gem 'bootstrap-datepicker-rails'
 gem 'uglifier', '>= 2.1.1'
 # Use CoffeeScript for .js.coffee assets and views
@@ -44,7 +44,7 @@ end
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
-  gem 'factory_girl_rails', '4.2.0'
+  gem 'factory_girl_rails', '4.1.0'
   gem 'cucumber-rails', '1.4.0', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
@@ -53,6 +53,12 @@ group :production do
   gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
+
+# Adding blacklight
+gem 'blacklight'
+
+# Because I am using blacklight with Linux
+gem 'therubyracer'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -66,3 +72,5 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+
+gem "bootstrap-sass"

@@ -1,0 +1,69 @@
+<% if signed_in? %>
+	<div id="signedContent" class="row-fluid">
+		<section id="center" class="span6">
+			<h3>You Share Your Work</h3>
+			<div id="introduction">
+				<p>
+					Thank you for contributing to the free space - pool of personal research ...
+				<p>
+					This is the Home Page of the Social Networking Share Your Work Application
+				</p>
+			</div>
+			<div id="lastUploaded" class="showArticles">
+				<div class="sectionTitle">
+					<h4>Last Uploaded Papers</h4>
+				</div>
+				<div id="uploadedPapers">
+					<%= # render 'shared/all_articles' 
+					%>
+				</div> 
+			</div> 
+		</section>
+		<aside id="userSignedIn" class="span3">
+			<section id="userInfo">
+				<%= render 'shared/user_info' %>
+			</section>
+			<section id="userStats">
+			 	<%= render 'shared/stats' %> 
+			</section>
+			<section>
+				<%= render 'shared/micropost_form' %> 
+				 <h4>Your Uploads</h4>
+				 <div id="uploadNumb">number of uploads</div>
+				 <div id="uploadPaper">
+				 	<%= # link_to "Upload your Paper or Copy and paste", uploadarticle_path 
+				 	%> at your convenience
+				 </div>
+				 <div id="socialMedia">
+				 	facebook - google+ - twitter
+				 </div>
+			</section>
+			
+		</aside>
+		<section id="microFeed" class="span8">
+				<h4>Micropost Feed</h4>
+				<%= #render 'shared/feed'
+				 %> 
+		</section>
+	</div>
+<% else %>
+	<div>
+		<h3>Welcome to the Share Your Work Space</h3>
+		
+		<p>
+			Check the recently uploaded articles. <%= link_to "Sign up", signup_path %> if you would like to share your article, 
+			follow an author, request friendship or download an article.
+		</p>
+		
+		<section id="recentlyViewedList">
+			<h4>Recently Uploaded articles</h4>
+			<%= #render 'shared/all_articles' 
+			%> 
+		</section>
+		
+		<%= link_to "Sign up now!", signup_path,
+									class: "btn btn-large btn-primary" %>
+	</div>
+	
+	<%= link_to image_tag("rails.png", alt: "Share Your Work"), 'http://www.cd-c.org/Web-Consultant/' %>
+<% end %>	

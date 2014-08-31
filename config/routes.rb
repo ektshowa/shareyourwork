@@ -1,7 +1,20 @@
 Rails.application.routes.draw do
-  resources :users
+  get 'relationships_controller/create'
+
+  get 'relationships_controller/destroy'
+
+  root :to => "catalog#index"
+  Blacklight.add_routes(self)
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
-  root 'static_pages#home'
+  resources :microposts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
+# Commented to install Blacklight. Should be restored later  
+#  root 'static_pages#home'
   match '/signup',    to: 'users#new',            via: 'get'
   match '/signin',    to: 'sessions#new',         via: 'get'
   match '/signout',   to: 'sessions#destroy',     via: 'delete'

@@ -56,7 +56,37 @@ p {
 }
 
 /* header */
+/* id=searchbar-inner-container was searchbarContainer in the old navbar */
+#header-navbar-fixed-top {
+  margin-top: 30px;
+}
+#searchbar-navbar {
+  margin: 0px;
+  padding: 0px;
+}
+#searchbar-container {
+  margin: 0px;
+  padding: 0px;
+}
 
+#searchbar {
+  padding: 0px;
+  margin: 0px;
+}
+#searchbar_inner {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+#searchbar_links {
+  float: right;
+  margin-right: 0px;
+  margin-left: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
 #logo {
   float: left;
   margin-right: 10px;
@@ -137,6 +167,35 @@ aside {
   margin-right: 10px;
 }
 
+.stats {
+  overflow: auto;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $grayLighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+}
+
 /* form */
 
 input, textarea, select, .uneditable-input {
@@ -163,3 +222,17 @@ input {
   @extend .error;
 }
 
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
