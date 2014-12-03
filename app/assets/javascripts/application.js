@@ -17,4 +17,16 @@
 //
 // Required by Blacklight
 //= require blacklight/blacklight
+//= require bootstrap-datepicker
 //= require_tree .
+ 
+$(document).ready(function() {
+	var clickOnPopupLink = function() {
+		$('body').on('click', '.static-popup-link', function() {
+			$('#modal-newFile').modal('show');
+		});
+	};
+	
+	clickOnPopupLink();
+});
+

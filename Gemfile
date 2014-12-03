@@ -9,6 +9,7 @@ gem 'rails', '4.1.1'
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 gem 'sprockets'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
@@ -72,5 +73,3 @@ gem 'therubyracer'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-
-gem "bootstrap-sass"
