@@ -1,0 +1,15 @@
+
+
+<%
+	if !@article_data.nil?
+		user_id 	= @article_data["user_id"]
+		article_id	= @article_data["article_id"]
+	else
+		user_id 	= "#"
+		article_id 	= "#"
+	end	
+%>
+var linkhref = $(".static-popup-link").attr("href");
+
+var article_id = <%=article_id%>;
+$(".static-popup-link").attr("href",linkhref + "?article_id=" + article_id);

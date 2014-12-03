@@ -1,0 +1,12 @@
+<% 
+	if (@article.nil?)
+		thetext = "nil article"
+  	else
+  		thetext = @article.id
+  	end
+	
+%>
+$('#modal-newFile).submit(function(){
+	$('#savefile').modal('hide');
+})
+
