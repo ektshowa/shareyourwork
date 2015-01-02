@@ -10,8 +10,10 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :domainOfStudy
       t.string :occupation
       t.text :introduction
+      t.integer :user_id
 
       t.timestamps
     end
+    add_index :profiles, [:user_id]
   end
 end

@@ -1,0 +1,25 @@
+<div class="modal-header">
+	<a class="close" data-dismiss="modal">x</a>
+	<div id="commentModalHeader">
+		<h3>Comment the Post</h3>
+	</div>
+</div>
+<%= form_for(@commentmicropost, remote: true, :authenticity_token => true) do |f| %>
+	<div class="modal-body" style="height:100px;">
+		<%= render 'shared/error_messages', object: f.object %>
+		<div class="field">
+			<%= f.text_area :content, :rows => 5, placeholder: "Write your comment..." %>
+		</div>
+	</div>
+	<%= hidden_field_tag(:user_id, @micropost.user_id) %>
+	<%= hidden_field_tag(:micropost_id, @micropost.id) %>
+	<div class="modal-footer" style="height:10px;">
+		<%= f.submit "Save Comment", :class => "btn btn-success", :id => "saveComment" %>
+	</div>
+<% end %>	
+	
+
+
+
+
+

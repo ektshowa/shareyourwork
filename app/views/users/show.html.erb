@@ -1,7 +1,7 @@
 <% provide(:title, @user.name) %>
-<% if signed_in? %>
-	<div class="row">
-		<aside class="span4">
+<div class="row-fluid" id="usershare">
+	<div class="row-fluid">
+		<div class="span12">
 			<section>
 				<h1>
 					<%= gravatar_for @user %>
@@ -11,23 +11,90 @@
 			<section>
 				<%= render 'shared/stats' %>
 			</section>
-		</aside>
-		<div class="span8">
-			<%= render 'follow_form' %>
-			<h3>Micropost Feed</h3>
-			<%= render 'shared/feed' %>
 		</div>
 	</div>
-<% else %>
-	<div class="span8">
-		<% if @user.microposts.any? %>
-			<h3>Microposts (<%= @user.microposts.count %>)</h3>
-			<ol class="microposts">
-				<%= render @microposts %>
-			</ol>
-			<%= will_paginate @microposts %>
-		<% end %>
-	</div>	
-<% end %>
-	
-
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="span4">
+				<%= render 'users/follow_form' if signed_in? %>
+				<% if @user.microposts.any? %>
+					<div id="countMicros">
+						<h4>Microposts (<%= @user.microposts.count %>)</h4>
+					</div>
+					<div id="modal-newComment" class="modal hide fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+					</div>
+					<ol class="microposts">
+						<%= render @microposts %>
+					</ol>
+					<%= will_paginate @microposts %>
+				<% end %>
+			</div>
+			<div class="span4">
+				<section id="addPost">
+					<div id="addPostIntro">
+						<p>
+							Add a new Post to share your thoughts or Click an "Add a comment" link to comment a specific article.
+						</p>
+						<p>
+							<%= link_to "Upload a new article", uploadarticle_path %> to share your work and solution to any issue.
+						</p>
+					</div>
+					<%= render 'shared/micropost_form' %>
+					<div id="uploadArticleLink">
+						<p>
+							<%= link_to "Share Your Work, Upload an Article", uploadarticle_path %>
+						</p>
+					</div>
+				</section>
+			</div>
+			<div class="span4">
+				<section class="showArticles">
+					<div class="sectionTitle">
+						<h4>My Articles</h4>
+					</div>
+					<div>
+						<dl>
+							<%
+								@currentUserArticles.find_each do |article|
+							%>
+							<div class="articleTitle">
+								<dt><%= article.title %></dt>
+							</div>
+							<dd><span><%= article.description %></span></dd>
+							<% end %>
+						</dl>
+					</div>
+				</section>
+				<section class="showArticles">
+					<div class="sectionTitle">
+						<h4>Articles I follow</h4>
+					</div>
+					<div>
+						<dl>
+							<%
+								@followedArticles.each do |article|
+							%>
+							<div class="articleTitle">
+								<dt><h5><%= article.title %></h5></dt>
+							</div>
+							<dd><span><%= article.description %></span></dd>
+							<% end %>
+						</dl>
+					</div>
+				</section>
+			</div>			
+		</div>		
+	</div>		
+				
+							
+							
+							
+							
+							
+						
+						
+						
+						
+			
+			
+						

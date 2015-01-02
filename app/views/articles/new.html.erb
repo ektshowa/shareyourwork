@@ -31,9 +31,8 @@
 	</p>
 </div>	
 <div id="uploadModalLink1">
-	<%= link_to "Add the article file", new_articlefile_path, id: "uploadFile", remote: true, class: 'static-popup-link' %>	
+	<%= link_to "Add the article file", new_articlefile_path, id: "uploadFile", remote: true, class: 'static-popup-link', :'data-modalType' => 'File'%>	
 </div>
-<a href="#myModal"  data-toggle="modal">Launch demo modal</a>
 <div id="modal-newFile" class="modal hide fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
 </div>
 

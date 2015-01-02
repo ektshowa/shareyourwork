@@ -1,0 +1,33 @@
+<h4><%= current_user.name%>, welcome to your YShare Page</h4>
+
+<p>
+	<%= current_user.name%>, tell your fellow YShare space users a little bit about yourself.<br/>
+	Share your goals, subject of research, ...
+</p>
+<% 
+	if @profile
+		pageContent = "";
+		pageContent += "Living in #{@profile.city} " unless @profile.city.nil?
+		pageContent += ", #{@profile.country} (\\n)" unless @profile.country.nil?
+		pageContent += "I have a #{@profile.educationDegree} " unless @profile.educationDegree.nil?
+		pageContent += "in #{@profile.domainOfStudy} " unless @profile.domainOfStudy.nil?
+		pageContent += "from #{@profile.college}." unless @profile.college.nil?
+%>
+		<p><%= pageContent %></p>
+
+<%
+		if (!@profile.introduction.nil?)
+%>
+			<p><%= @profile.introduction %></p>
+<%
+		end
+%>
+		<p> Please <%= link_to "click here ", updateprofile_path(@profile) %> to update your Profile.</p>
+<%
+	else
+%>
+		<p>You do not have a profile yet. Please <%= link_to "click here ", createprofile_path %> to create one.</p>
+		
+<%
+	end
+%>

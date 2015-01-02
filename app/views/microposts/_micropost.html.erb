@@ -7,5 +7,15 @@
 		<%= link_to "delete", micropost, method: :delete,
 		    							 data: { confirm: "You sure?" },
 		    							 title: micropost.content %>
-	<% end %>			
+	<% end %>	
+	<%= link_to "add comment", new_postcomment_path(micropostID: micropost.id), id: "postLink_#{micropost.id}", remote: true, :'data-micropostID' => "#{micropost.id}" %>
+	<div id="commentSpace_<%=micropost.id%>">
+	</div>
+	<div id="commentList_<%=micropost.id%>">
+		    <%= micropost.commentmicroposts.count %> comments on this post
+		<ol>
+			<% @commentmicroposts = micropost.commentmicroposts %>
+			<%=	render @commentmicroposts %>
+		</ol>
+	</div>		
 </li>

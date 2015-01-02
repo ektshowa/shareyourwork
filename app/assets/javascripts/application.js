@@ -21,9 +21,16 @@
 //= require_tree .
  
 $(document).ready(function() {
+	
 	var clickOnPopupLink = function() {
+		
 		$('body').on('click', '.static-popup-link', function() {
-			$('#modal-newFile').modal('show');
+			var modalType = $(this).attr('data-modalType');
+			//alert("type " + modalType);
+			if (modalType.length > 0)
+				$('#modal-new' + modalType).modal('show');
+			//$('#modal-newFile').modal('show');
+			//$('#modal-newComment').modal('show');
 		});
 	};
 	

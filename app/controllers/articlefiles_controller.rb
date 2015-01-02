@@ -13,7 +13,7 @@ class ArticlefilesController < ApplicationController
   end
   
   def new
-    @article = Article.find_by_id(params[:article_id])
+    @article = Article.find_by(id: params[:article_id])
     @articlefile = @article.articlefiles.build
   end
   

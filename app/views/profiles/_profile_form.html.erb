@@ -1,0 +1,31 @@
+<div class="row-fluid">
+	<div class="span6 offset3">
+		<%= form_for (@profile) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+			<%= f.label :dateOfBirth, "Date of birth" %>
+			<%= f.date_field :dateOfBirth %>
+			<%= f.label :dateOfBirthRange, "How old are you, select a range"%>
+			<%= f.select(:dateOfBirthRange, options_for_select([['< 20', 1],['20 - 30', 2],
+						['31 - 40', 3], ['41 - 50', 4], ['51 - 60', 5], ['> 60', 6]])) %>
+			<br/><span>About where you live</span><br/>
+			<%= f.label :country, "Country"%>
+			<%= f.text_field :country %>
+			<%= f.label :city, "City" %>
+			<%= f.text_field :city %>
+			<br/><span>About your background</span><br/>
+			<%= f.label :occupation, "Current Occupation" %>
+			<%= f.text_field :occupation %>
+			<%= f.label :college, "College"%>
+			<%= f.text_field :college %>
+			<%= f.label :educationDegree, "degree(s) obtained" %>
+			<%= f.text_field :educationDegree %>
+			<%= f.label :domainOfStudy, "School you attended or Major"%>
+			<%= f.text_field :domainOfStudy %>
+			<br/><span>About your work, research or goals</span><br/>
+			<%= f.label :introduction, "Personal work" %>
+			<%= f.text_field :introduction %>
+			<%= f.hidden_field :id %>
+			<%= f.submit "save your profile", class: "btn btn-large btn-primary" %>
+		  <% end %>
+	 </div>
+</div>		

@@ -1,0 +1,16 @@
+	<div id="commentHeader">
+		
+	</div>
+	<div id="commentArea">
+		<%= form_for(@commentmicropost, remote: true, :html => {:id => "comment_form_#{@micropost.id}" }) do |f| %>
+			<%= f.text_area :content, :id => "content_#{@micropost.id}", :name => "content_#{@micropost.id}",:rows => 5, placeholder: "Write your comment..." %>
+			<%= f.hidden_field :user_id, :id => "user_id_#{@micropost.id}", :name => "user_id_#{@micropost.id}", :value => "#{@micropost.user_id}" %>
+			<%= f.hidden_field :micropost_id, :id => "micropost_id_#{@micropost.id}", :name => "micropost_id_#{@micropost.id}", :value => "#{@micropost.id}" %>
+			<div id="buttonArea">
+				<%= f.submit "Save", :class => "btn-xs btn-success", :id => "saveComment_#{@micropost.id}" %>
+				<%= f.submit "Cancel", :class => "btn-xs btn-success", :id => "cancelComment_#{@micropost.id}" %>
+			</div>
+		<% end %>
+	</div>
+
+		

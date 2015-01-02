@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
                                    dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
   has_many :articles, inverse_of: :user, dependent: :destroy
+  has_many :profiles
   attr_accessible :email, :password, :password_confirmation if Rails::VERSION::MAJOR < 4
 # Connects this user object to Blacklights Bookmarks. 
   include Blacklight::User

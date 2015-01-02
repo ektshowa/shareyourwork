@@ -1,0 +1,41 @@
+<% 
+	micropostID = params[:micropostID] 
+%>
+
+var display = $('#commentSpace_<%=micropostID%>').css('display');
+if (display == "none")
+	$('#commentSpace_<%=micropostID%>').css('display', 'inline');
+	
+$('#commentSpace_<%=micropostID%>').html("<%= j render('/commentmicroposts/new')%>");
+
+
+$('#cancelComment_<%=micropostID%>').click(function(event){
+	event.preventDefault();
+	$('#commentSpace_<%=micropostID%> textarea').text("");
+	$('#commentSpace_<%=micropostID%>').hide();	
+});
+
+$('#saveComment_<%=micropostID%>').click(function(event){
+	event.preventDefault();
+	var content = $('#content_<%=micropostID%>').val();
+	var micropostID = <%=micropostID%>;
+	var userID = $('#user_id_<%=micropostID%>').val();
+	
+	$.ajax({
+		type: "POST",
+		url: '/commentmicroposts.json',
+		data: {
+			commentmicropost: {
+				content : content,
+				micropost_id : micropostID,
+				user_id : userID
+			}
+		},
+		dataType: 'json',
+		success: function(data){
+			$('#commentSpace_<%=micropostID%>').hide();
+			$('#commentList_<%=micropostID%> ol').append("<li>" + data.content + "</li>");
+		}
+	});
+});
+

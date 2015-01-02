@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'profiles/create'
+
+  get 'profiles/edit'
+
+  get 'profiles/show'
+
   get 'relationships_controller/create'
 
   get 'relationships_controller/destroy'
@@ -14,7 +20,9 @@ Rails.application.routes.draw do
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :articles
-  resources :articlefiles
+  resources :articlefiles, only: [:new, :create]
+  resources :profiles
+  resources :commentmicroposts, only: [:new, :create] 
 # Commented to install Blacklight. Should be restored later  
 #  root 'static_pages#home'
   match '/signup',    to: 'users#new',            via: 'get'
@@ -25,7 +33,10 @@ Rails.application.routes.draw do
   match '/contact',   to: 'static_pages#contact', via: 'get'
   match '/uploadarticle',   to: 'articles#new',     via: 'get'
  # match '/uploadarticle/upload', to: 'uploadarticle#upload',  via: 'post' 
-  match '/new_articlefile', to: 'articlefiles#new', via: 'get' 
+  match '/new_articlefile', to: 'articlefiles#new', via: 'get'
+  match '/createprofile', to: 'profiles#new', via: 'get'
+  match '/updateprofile', to: 'profiles#edit', via: 'get'
+  match '/new_postcomment', to: 'commentmicroposts#new', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
